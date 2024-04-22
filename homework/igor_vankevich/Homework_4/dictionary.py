@@ -6,7 +6,7 @@ my_dict['set'] = {3.22, 14, 'ololo', 14, 22}
 print(my_dict['tuple'][-1])
 my_dict['list'].append('last')
 my_dict['list'].pop(1)
-my_dict['dict']['i am a tuple'] = 'no, i am a dict'
+my_dict['dict'][('i am a tuple',)] = 'no, i am a dict'
 my_dict['dict'].pop('one')
 my_dict['set'].add(123)
 my_dict['set'].discard(22)

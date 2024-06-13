@@ -50,8 +50,8 @@ class BouquetFlowers:
         print(f'Cost bouquet = {flowers1.cost + flowers2.cost + flowers3.cost + flowers4.cost}')
 
     def wilting_time(self):
-        wilting = (self.flowers1.life_time + self.flowers2.life_time + self.flowers3.life_time +
-                   self.flowers4.life_time) / 4
+        wilting = (self.flowers1.life_time + self.flowers2.life_time + self.flowers3.life_time
+                   + self.flowers4.life_time) / 4
         return print(f'Wilting = {wilting}')
 
     def sort_size(self):

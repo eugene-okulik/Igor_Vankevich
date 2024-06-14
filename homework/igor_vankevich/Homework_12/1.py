@@ -21,7 +21,7 @@ class WildFlowers(Flowers):
     type = 'wild'
     color = 'green'
 
-    def __init__(self, name,  cost, freshness, size, life_time):
+    def __init__(self, name, cost, freshness, size, life_time):
         super().__init__(name, cost, freshness, size, life_time)
 
 
@@ -29,7 +29,7 @@ class ForestFlowers(Flowers):
     type = 'forest'
     color = 'blue'
 
-    def __init__(self, name,  cost, freshness, size, life_time):
+    def __init__(self, name, cost, freshness, size, life_time):
         super().__init__(name, cost, freshness, size, life_time)
 
 

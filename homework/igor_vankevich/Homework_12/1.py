@@ -35,63 +35,44 @@ class ForestFlowers(Flowers):
 
 class BouquetFlowers:
 
-    list_flowers = []
-
     def __init__(self, *flower):
-        for x in flower:
-            BouquetFlowers.list_flowers.append(x)
+        self.list_flowers = list(flower)
 
-    @staticmethod
-    def wilting_time():
-        i = 0
+    def wilting_time(self):
         a = []
-        while i < len(BouquetFlowers.list_flowers):
-            a.append(BouquetFlowers.list_flowers[i].life_time)
-            i += 1
-        print(sum(a) / len(BouquetFlowers.list_flowers))
+        for flower in self.list_flowers:
+            a.append(flower.life_time)
+        print(sum(a) / len(self.list_flowers))
 
-    @staticmethod
-    def sort_size():
-        i = 0
+    def sort_size(self):
         a = []
-        while i < len(BouquetFlowers.list_flowers):
-            a.append(BouquetFlowers.list_flowers[i].size)
-            i += 1
+        for flower in self.list_flowers:
+            a.append(flower.size)
         print(sorted(a))
 
-    @staticmethod
-    def sort_freshness():
-        i = 0
+    def sort_freshness(self):
         a = []
-        while i < len(BouquetFlowers.list_flowers):
-            a.append(BouquetFlowers.list_flowers[i].freshness)
-            i += 1
+        for flower in self.list_flowers:
+            a.append(flower.freshness)
         print(sorted(a))
 
-    @staticmethod
-    def sort_cost():
-        i = 0
+    def sort_cost(self):
         a = []
-        while i < len(BouquetFlowers.list_flowers):
-            a.append(BouquetFlowers.list_flowers[i].cost)
-            i += 1
+        for flower in self.list_flowers:
+            a.append(flower.cost)
         print(sorted(a))
 
-    @staticmethod
-    def sort_color():
-        i = 0
+    def sort_color(self):
         a = []
-        while i < len(BouquetFlowers.list_flowers):
-            a.append(BouquetFlowers.list_flowers[i].color)
-            i += 1
+        for flower in self.list_flowers:
+            a.append(flower.color)
         print(sorted(a))
 
-    @staticmethod
-    def search_name():
+    def search_name(self):
         user_input = input('enter a name\n')
         i = 0
-        while i < len(BouquetFlowers.list_flowers):
-            if user_input == BouquetFlowers.list_flowers[i].name:
+        while i < len(self.list_flowers):
+            if user_input == self.list_flowers[i].name:
                 print(f'{user_input} in bouquet')
             i += 1
 
@@ -103,9 +84,9 @@ flower4 = WildFlowers('clover', 42, 9, 12, 15)
 flower5 = ForestFlowers('lily', 2, 15, 15, 17)
 flower6 = ForestFlowers('violet', 8, 17, 21, 17)
 bouquet1 = BouquetFlowers(flower1, flower4, flower5, flower6)
-BouquetFlowers.wilting_time()
-BouquetFlowers.sort_size()
-BouquetFlowers.sort_cost()
-BouquetFlowers.sort_freshness()
-BouquetFlowers.sort_color()
-BouquetFlowers.search_name()
+BouquetFlowers.wilting_time(bouquet1)
+BouquetFlowers.sort_size(bouquet1)
+BouquetFlowers.sort_cost(bouquet1)
+BouquetFlowers.sort_freshness(bouquet1)
+BouquetFlowers.sort_color(bouquet1)
+BouquetFlowers.search_name(bouquet1)

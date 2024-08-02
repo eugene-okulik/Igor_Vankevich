@@ -1,0 +1,57 @@
+INSERT INTO students (name, second_name, group_id) values ('Ryan', 'Gosling', NULL)
+
+SELECT * FROM students order by id DESC limit 1
+
+INSERT INTO books (title, taken_by_student_id) values ('Necronomicon', '1689')
+
+INSERT INTO books (title, taken_by_student_id) values ('pig Pepe', '1689')
+
+INSERT INTO books (title, taken_by_student_id) values ('anno', '1689')
+
+INSERT INTO `groups` (title, start_date, end_date) values ('neco_book', 'fed 1080', 'dec 2024')
+
+SELECT * FROM `groups` order by id DESC limit 1
+
+UPDATE students set group_id = '1605' WHERE id = '1689'
+
+INSERT INTO subjets (title) values ('math')
+
+INSERT INTO subjets (title) values ('phys')
+
+SELECT * FROM subjets s order by id DESC limit 2
+
+INSERT INTO lessons (title, subject_id) values ('less_phys_1', '2142')
+
+INSERT INTO lessons (title, subject_id) values ('less_phys_2', '2142')
+
+INSERT INTO lessons (title, subject_id) values ('less_math_1', '2141')
+
+INSERT INTO lessons (title, subject_id) values ('less_math_2', '2141')
+
+SELECT * FROM lessons order by id DESC limit 4
+
+INSERT INTO marks (value, lesson_id, student_id) values ('5', '4743', '1689')
+
+INSERT INTO marks (value, lesson_id, student_id) values ('3', '4742', '1689')
+
+INSERT INTO marks (value, lesson_id, student_id) values ('1', '4741', '1689')
+
+INSERT INTO marks (value, lesson_id, student_id) values ('4', '4740', '1689')
+
+SELECT value from marks WHERE student_id = 1689
+
+SELECT title from books WHERE taken_by_student_id = 1689
+
+SELECT st.name, st.second_name, g.title, b.title, m.value, l.title, su.title
+FROM students st
+join `groups` g 
+on st.group_id = g.id 
+join books b 
+on st.id = b.taken_by_student_id
+JOIN marks m 
+on st.id = m.student_id
+JOIN lessons l 
+on m.lesson_id = l.id
+JOIN subjets su 
+on l.subject_id = su.id 
+WHERE st.id = 1689

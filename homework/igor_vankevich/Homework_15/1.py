@@ -56,19 +56,19 @@ for book in books:
     print(book['title'])
 
 select_query = f'''
-SELECT st.name, st.second_name, g.title, b.title, m.value, l.title, su.title
-FROM students st
+SELECT st.name, st.second_name, g.title, b.title, m.value, l.title, su.title 
+FROM students st 
 join `groups` g 
 on st.group_id = g.id 
 join books b 
-on st.id = b.taken_by_student_id
+on st.id = b.taken_by_student_id 
 JOIN marks m 
-on st.id = m.student_id
+on st.id = m.student_id 
 JOIN lessons l 
-on m.lesson_id = l.id
+on m.lesson_id = l.id 
 JOIN subjets su 
 on l.subject_id = su.id 
-WHERE st.id = {student_id}
+WHERE st.id = {student_id} 
 '''
 
 cursor.execute(select_query)

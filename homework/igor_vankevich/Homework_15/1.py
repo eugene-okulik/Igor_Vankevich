@@ -69,7 +69,7 @@ on m.lesson_id = l.id
 JOIN subjets su 
 on l.subject_id = su.id 
 WHERE st.id = {student_id} 
-'''
+''' 
 
 cursor.execute(select_query)
 print(cursor.fetchall())

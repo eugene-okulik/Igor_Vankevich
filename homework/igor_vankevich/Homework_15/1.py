@@ -58,7 +58,7 @@ books = cursor.fetchall()
 for book in books:
     print(book['title'])
 
-select_query = f'''
+select_query = '''
 SELECT st.name, st.second_name, g.title, b.title, m.value, l.title, su.title
 FROM students st
 join `groups` g

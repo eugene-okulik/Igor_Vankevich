@@ -74,7 +74,6 @@ on l.subject_id = su.id
 WHERE st.id = %s
 and st.name = %s
 and st.second_name = %s
-
 '''
 
 cursor.execute(select_query, (student_id, student['name'], student['second_name']))

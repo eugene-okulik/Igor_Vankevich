@@ -60,7 +60,7 @@ for row in data:
         row['lesson_title'],
         row['mark_value']
     )
-                   )
+    )
     if cursor.fetchall() == empty:
         undiscovered_query.append(row)
 

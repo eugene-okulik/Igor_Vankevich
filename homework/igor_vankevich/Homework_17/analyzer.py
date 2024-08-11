@@ -27,4 +27,4 @@ for file_name in file_dir:
                 word_after = ind_text + 6
                 word_before = ind_text - 5
                 words = list_line[word_before:word_after]
-                print(f'{args.text} found in {file_name} on line {line_num}\n{' '.join(words)}\n')
+                print(f'{args.text} found in {file_name} on line {line_num}\n{" ".join(words)}\n')

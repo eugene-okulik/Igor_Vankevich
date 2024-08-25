@@ -17,7 +17,7 @@ def process_test():
 
 
 @pytest.mark.parametrize('name', ['mcbook', 'notPC', 'bla?*(?№;*:bla'])
-def test_create_post(name, process_testing, process_test):
+def test_create_object(name, process_testing, process_test):
     body = {
         "name": name,
         "data": {
@@ -37,7 +37,7 @@ def test_create_post(name, process_testing, process_test):
 
 
 @pytest.fixture()
-def test_post_id(process_test):
+def object_id(process_test):
     body = {
         "name": 'macbook1212',
         "data": {
@@ -59,7 +59,7 @@ def test_post_id(process_test):
 
 
 @pytest.mark.critical
-def test_change_obj_put(test_post_id, process_test):
+def test_change_obj_put(object_id, process_test):
     body = {
         "name": "Apple MacBook Prodwdwdawdaw 16",
         "data": {
@@ -71,7 +71,7 @@ def test_change_obj_put(test_post_id, process_test):
     }
     headers = {"content-type": "application/json"}
     res = requests.put(
-        f'https://api.restful-api.dev/objects/{test_post_id}',
+        f'https://api.restful-api.dev/objects/{object_id}',
         json=body,
         headers=headers
     )
@@ -79,7 +79,7 @@ def test_change_obj_put(test_post_id, process_test):
 
 
 @pytest.mark.medium
-def test_change_obj_patch(test_post_id, process_test):
+def test_change_obj_patch(object_id, process_test):
     body = {
         "name": "Apple MacBook Prodwdwdawdaw 11111116",
         "data": {
@@ -89,8 +89,13 @@ def test_change_obj_patch(test_post_id, process_test):
     }
     headers = {"content-type": "application/json"}
     res = requests.put(
-        f'https://api.restful-api.dev/objects/{test_post_id}',
+        f'https://api.restful-api.dev/objects/{object_id}',
         json=body,
         headers=headers
     )
     assert res.json()['name'] == "Apple MacBook Prodwdwdawdaw 11111116"
+
+
+def test_delete_odj(object_id, process_test):
+    res = requests.delete(f'https://api.restful-api.dev/objects/{object_id}')
+    assert res.status_code == 200

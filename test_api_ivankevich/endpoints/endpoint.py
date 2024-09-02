@@ -6,5 +6,3 @@ class Endpoint:
     response = None
     json = None
     headers = {"content-type": "application/json"}
-
-

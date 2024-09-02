@@ -24,5 +24,3 @@ class CreateObject(Endpoint):
         yield post_id
         response = requests.delete(f'https://api.restful-api.dev/objects/{post_id}')
         assert response.status_code == 200
-
-

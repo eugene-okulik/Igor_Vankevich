@@ -2,6 +2,7 @@ import pytest
 from endpoints.create_new_object import CreateObject
 from endpoints.change_object_put import ChangeObjectPut
 from endpoints.change_object_patch import ChangeObjectPatch
+from endpoints.delete_object import DeleteObject
 
 
 @pytest.fixture()
@@ -17,6 +18,11 @@ def change_put_object():
 @pytest.fixture()
 def change_patch_object():
     return ChangeObjectPatch()
+
+
+@pytest.fixture()
+def delete_object():
+    return DeleteObject()
 
 
 @pytest.fixture(scope='session')

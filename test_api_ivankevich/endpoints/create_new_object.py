@@ -10,17 +10,11 @@ class CreateObject(Endpoint):
     def new_object(self, body, headers=None):
         headers = headers if headers else self.headers
         self.response = requests.post(
-            'https://api.restful-api.dev/objects',
+            f'{self.url}',
             json=body,
             headers=headers
         )
         self.json = self.response.json()
         self.post_id = self.json['id']
-        return self.post_id
-
-    @allure.step('Delete object')
-    def delete_object(self):
-        post_id = self.response.json()['id']
-        yield post_id
-        response = requests.delete(f'https://api.restful-api.dev/objects/{post_id}')
-        assert response.status_code == 200
+        print(f'\nObject created: {self.post_id}')
+        return self.response

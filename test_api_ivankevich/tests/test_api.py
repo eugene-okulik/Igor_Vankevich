@@ -10,7 +10,8 @@ data = [
 @pytest.mark.parametrize('body', data)
 def test_create_object(create_new_object, body, process_testing, process_test):
     create_new_object.new_object(body)
-    create_new_object.delete_object()
+    create_new_object.check_response_title_is_correct(body['name'])
+    create_new_object.check_that_status_is_200()
 
 
 def test_object_id(create_new_object, process_test, process_testing):
@@ -24,10 +25,11 @@ def test_object_id(create_new_object, process_test, process_testing):
         }
     }
     create_new_object.new_object(body)
-    create_new_object.delete_object()
+    create_new_object.check_response_title_is_correct(body['name'])
+    create_new_object.check_that_status_is_200()
 
 
-def test_change_obj_put(change_put_object, process_test, create_new_object):
+def test_change_obj_put(change_put_object, process_test, post_id):
     body = {
         "name": "Apple MacBook Prodwdwdawdaw 16",
         "data": {
@@ -37,10 +39,12 @@ def test_change_obj_put(change_put_object, process_test, create_new_object):
             "Hard disk size": "1 TB"
         }
     }
-    change_put_object.change_put(create_new_object.post_id, body)
+    change_put_object.change_put(post_id, body)
+    change_put_object.check_response_title_is_correct(body['name'])
+    change_put_object.check_that_status_is_200()
 
 
-def test_change_obj_patch(change_patch_object, process_test, create_new_object):
+def test_change_obj_patch(change_patch_object, process_test, post_id):
     body = {
         "name": "Apple MacBook Prodwdwdawdaw 16",
         "data": {
@@ -48,4 +52,11 @@ def test_change_obj_patch(change_patch_object, process_test, create_new_object):
             "price": 18492323.99,
         }
     }
-    change_patch_object.change_patch(create_new_object.post_id, body)
+    change_patch_object.change_patch(post_id, body)
+    change_patch_object.check_response_title_is_correct(body['name'])
+    change_patch_object.check_that_status_is_200()
+
+
+def test_delete_object(delete_object, process_test, post_id):
+    delete_object.delete_object(post_id)
+    delete_object.check_that_status_is_200()

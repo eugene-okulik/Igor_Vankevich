@@ -32,7 +32,7 @@ def test_hello_world(driver):
     start_button = driver.find_element(By.XPATH, "//button[text()='Start']")
     start_button.click()
     WebDriverWait(driver, 10).until(
-            EC.text_to_be_present_in_element((By.ID, 'finish'), 'Hello World!')
+        EC.text_to_be_present_in_element((By.ID, 'finish'), 'Hello World!')
     )
     finish_text = driver.find_element(By.ID, 'finish')
     assert finish_text.text == expected_text

@@ -1,8 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.keys import Keys
 
 first_name = 'Garold'
 last_name = 'Kumar'
@@ -28,11 +27,10 @@ last_name_string.send_keys(last_name)
 email_string = driver.find_element(By.ID, 'userEmail')
 email_string.send_keys(email)
 male_radio = driver.find_element(By.XPATH, f"//label[contains(text(), '{gender}')]")
-WebDriverWait(driver, 10).until(EC.element_to_be_clickable(male_radio)).click()
+male_radio.click()
 mobile_string = driver.find_element(By.ID, 'userNumber')
 mobile_string.send_keys(number)
 date_string = driver.find_element(By.CLASS_NAME, 'react-datepicker__input-container')
-date_string.location_once_scrolled_into_view
 date_string.click()
 month_birth = driver.find_element(By.CLASS_NAME, 'react-datepicker__month-select')
 dropdown_month = Select(month_birth)
@@ -44,6 +42,10 @@ day_birth = driver.find_element(
     By.XPATH,
     f"//div[@class='react-datepicker__month']//div[contains(@class, 'react-datepicker__day') and text()='{day}']")
 day_birth.click()
+subjects_input = driver.find_element(By.ID, "subjectsInput")
+subjects_input.click()
+subjects_input.send_keys("Math")
+subjects_input.send_keys(Keys.TAB)
 hobbies_checkbox = driver.find_element(By.XPATH, f"//label[contains(text(), '{hobbies}')]")
 hobbies_checkbox.click()
 address_form = driver.find_element(By.ID, 'currentAddress')
@@ -57,7 +59,6 @@ city_dropdown.click()
 city_select = driver.find_element(By.XPATH, f"//div[text()='{city}']")
 city_select.click()
 submit = driver.find_element(By.ID, 'submit')
-submit.location_once_scrolled_into_view
 submit.click()
 info_window = driver.find_element(By.CLASS_NAME, 'modal-body')
 print(info_window.text)
